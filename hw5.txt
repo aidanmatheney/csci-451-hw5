@@ -1,0 +1,92 @@
+HW-5	CS451	10 points	Due: Monday, 10/5/2020
+
+Write a C/C++ program that uses the PTHREAD library to 
+create 3 threads. The program must to the following:
+
+* MAIN will open a file (hw5.out) for writing, then 
+  call thread #1, thread #2 and thread #3. MAIN will
+  create a global variable (a single character) that
+  will be used to pass the characters from the threads
+  such that they can be written to hw5.out. MAIN will
+  write these characters to the hw5.out file (the threads
+  cannot do this). MAIN will also close hw5.out when 
+  the threads are finished.
+
+* THREAD #1 will open a file (hw5-1.in) for reading, 
+  read 1 character value from the file, and put that 
+  value in a global variable. Thread #1 will then wait 
+  for thread #2 and #3 before reading the next value 
+  in hw5-1.in.
+
+* THREAD #2 will open a file (hw5-2.in) for reading, 
+  read 1 character value from the file, and put that 
+  value in a global variable. Thread #2 will then wait 
+  for thread #3 and #1 before reading the next value
+  in hw5-2.in.
+
+* THREAD #3 will open a file (hw5-3.in) for reading, 
+  read 1 character value from the file, and put that 
+  value in a global variable. Thread #3 will then wait 
+  for thread #1 and #2 before reading next value in
+  hw5-3.in.
+
+Obviously, you will need mutex(s) for this to work.
+Notes:
+1. When all of the data has been read, return control 
+   to the MAIN routine.
+2. The 3 input files will be the same size.
+3. I suggest you use the command "fscanf(file,
+   "%c\n", &value1)" to read the input files. 
+4. The format of hw5.out must be 1 character per line.
+
+SAMPLE hw5-1:
+-------------
+a
+b
+c
+d
+e
+f
+g
+h
+
+SAMPLE hw5-2:
+-------------
+1
+2
+3
+4
+5
+6
+7
+8
+
+SAMPLE hw5-3:
+-------------
+,
+.
+/
+?
+;
+:
+]
+[
+
+SAMPLE hw5-out
+--------------
+a
+1
+,
+b
+2
+.
+
+REQUIREMENTS:
+-------------
+1. Your program must compile and run on Linux Mint.
+2. Your full name must appear as a comment at the beginning of your program.
+3. Your source code must be named hw4-yourname.c or hw4-yourname.cpp
+4. Your source MUST compile using "gcc hw4-yourname.c -pthread" or 
+   "g++ hw4-yourname.cpp -lpthread"
+5. Failure to follow the above 4 directions will result in 
+   loss of points.
