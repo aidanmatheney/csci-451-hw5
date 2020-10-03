@@ -259,7 +259,7 @@ int safeVfscanf(
  * @param format The format (scanf).
  * @param ... The format arguments (scanf).
  *
- * @returns Whether unread characters remain.
+ * @returns True if the format was scanned, or false if the end of the file was met.
  */
 bool scanFileExact(
     FILE * const file,
@@ -269,9 +269,9 @@ bool scanFileExact(
 ) {
     va_list formatArgs;
     va_start(formatArgs, format);
-    bool const hasUnreadCharacters = scanFileExactVA(file, expectedMatchCount, format, formatArgs);
+    bool const scanned = scanFileExactVA(file, expectedMatchCount, format, formatArgs);
     va_end(formatArgs);
-    return hasUnreadCharacters;
+    return scanned;
 }
 
 /**
@@ -284,7 +284,7 @@ bool scanFileExact(
  * @param format The format (scanf).
  * @param formatArgs The format arguments (scanf).
  *
- * @returns Whether unread characters remain.
+ * @returns True if the format was scanned, or false if the end of the file was met.
  */
 bool scanFileExactVA(
     FILE * const file,

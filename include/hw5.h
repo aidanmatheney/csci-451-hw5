@@ -1,3 +1,9 @@
 #pragma once
 
-void hw5(void);
+#include <stdlib.h>
+
+void hw5(
+    char const * const *inFilePaths,
+    size_t inFileCount,
+    char const *outFilePath
+);
